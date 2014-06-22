@@ -12,7 +12,7 @@ InstaExport is a really simple node.js app which will export and download Instag
 3. Open up your favourite shell or command line and cd to the source code directory.
 4. Run 'npm install' to download any dependencies.
 5. Run 'node app'.
-6. You should now see an images directory inside the directory with the images in it.
+6. You should now see an images directory inside the source directory with the images in it.
 
 ## Requirements
 - Your local machine needs have node.js installed.
