@@ -1,0 +1,13 @@
+{
+	"name": "InstaExport",
+	"description": "Exports Instagram photos by hashtag to a local directory",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"request": "2.36.x",
+		"shortid": "2.0.x"
+	},
+	"engines": {
+		"node": "0.10.x"
+	}
+}
