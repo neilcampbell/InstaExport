@@ -4,16 +4,21 @@ var shortId = require('shortid');
 
 var options = {
     clientId: '',
-    tag: ''
+    tag: '',
+    limit: 0
 };
 
 var InstaExport = (function () {
-
+    var itemCount = 0;
     var exportUrlFormat = 'https://api.instagram.com/v1/tags/' + options.tag + '/media/recent?client_id=' + options.clientId;
 
     function InstaExport(options) {
         if (options.clientId === '' || options.tag === '') {
             throw new Error('Please supply both clientId and tag');
+        }
+
+        if(!options.limit) {
+            options.limit = 0;
         }
     }
 
@@ -38,12 +43,13 @@ var InstaExport = (function () {
             var response = JSON.parse(body);
             var nextUrl = response.pagination.next_url;
 
-            for (var i = 0; i < response.data.length; i++) {
+            for (var i = 0; i < response.data.length && (options.limit < 1 || itemCount < options.limit); i++) {
                 var item = response.data[i];
                 console.log('exporting: ' + item.images.standard_resolution.url);
                 downloadImage(item.images.standard_resolution.url, exportPath);
+                itemCount++;
             }
-            if (nextUrl) {
+            if (nextUrl && (options.limit < 1 || itemCount < options.limit)) {
                 fetchAndDownloadImages(nextUrl, exportPath);
             }
             else {

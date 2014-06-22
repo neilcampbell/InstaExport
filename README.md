@@ -5,6 +5,7 @@ InstaExport is a really simple node.js app which will export and download Instag
 ## Options
 - `clientId` (string) - Your API client id from Instagram. __Required__.
 - `tag` (string) - The tag name you want to download images for (without the #). __Required__.
+- `limit` (number) - The number of items to retrieve (ordered by most recent tag date). 0 or unlimited by default.
 
 ## Usage
 1. Simply clone or fork this repo to your local machine.
